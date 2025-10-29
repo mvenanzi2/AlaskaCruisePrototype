@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Cruise Concierge</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <style>
+    .form { background:#fff; border:1px solid var(--border); border-radius:14px; box-shadow: var(--shadow); padding:16px; }
+    .form-grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    .form-grid .full { grid-column: 1 / -1; }
+    label { font-weight:600; font-size:14px; }
+    input, select, textarea { width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:#fff; }
+    textarea { min-height: 120px; }
+    @media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">⛴️</span>
+        <span class="brand-name">Cruise Concierge</span>
+      </a>
+      <nav>
+        <button class="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+        <div id="nav-links" class="nav-links">
+          <a href="/">Home</a>
+          <a href="/pages/destinations/">Destinations</a>
+          <a href="/pages/deals/">Deals</a>
+          <a href="/pages/ships/">Ships</a>
+          <a href="/pages/about/">About</a>
+          <a class="btn" aria-current="page" href="/pages/contact/">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h1>Free cruise quote</h1>
+          <p class="lead">Tell us a bit about your trip and we’ll follow up shortly.</p>
+        </div>
+
+        <form class="form" name="contact" method="post" action="#" onsubmit="alert('Thanks! We will be in touch.'); return false;">
+          <div class="form-grid">
+            <div>
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="jane@example.com" required />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" placeholder="(555) 123-4567" />
+            </div>
+            <div>
+              <label for="party">Travelers</label>
+              <select id="party" name="party">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5+</option>
+              </select>
+            </div>
+            <div>
+              <label for="dates">Target dates</label>
+              <input id="dates" name="dates" type="text" placeholder="e.g., June 2025, flexible 1-2 weeks" />
+            </div>
+            <div>
+              <label for="destination">Preferred destination</label>
+              <input id="destination" name="destination" type="text" placeholder="e.g., Alaska, Caribbean, Mediterranean" />
+            </div>
+            <div class="full">
+              <label for="notes">What would make this trip perfect?</label>
+              <textarea id="notes" name="notes" placeholder="Tell us about cabin type, budget, interests, must-sees..."></textarea>
+            </div>
+          </div>
+          <div style="margin-top:14px; display:flex; gap:8px;">
+            <button class="btn primary" type="submit">Request quote</button>
+            <a class="btn" href="mailto:hello@cruiseconcierge.example?subject=Cruise%20quote">Email us instead</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Cruise Concierge</strong><br/>
+        <small class="muted">Your trusted cruise travel agent</small>
+      </div>
+      <div>
+        <strong>Contact</strong><br/>
+        <a href="mailto:hello@cruiseconcierge.example">hello@cruiseconcierge.example</a><br/>
+        <a href="tel:+15551234567">(555) 123-4567</a>
+      </div>
+      <div>
+        <strong>Explore</strong><br/>
+        <a href="/pages/destinations/">Destinations</a><br/>
+        <a href="/pages/deals/">Deals</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js" defer></script>
+</body>
+</html>

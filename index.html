@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cruise Concierge — Your Trusted Cruise Travel Agent</title>
+  <meta name="description" content="Tailor-made cruise vacations, expert guidance, and exclusive cruise deals. Book your dream voyage with Cruise Concierge." />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24'%3E%3Cpath fill='%230a2740' d='M3 13c2-1 4-2 9-2s7 1 9 2l-2 6H5z'/%3E%3Cpath fill='%231fb6ff' d='M6 10a6 6 0 0 1 12 0z'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">⛴️</span>
+        <span class="brand-name">Cruise Concierge</span>
+      </a>
+      <nav>
+        <button class="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+        <div id="nav-links" class="nav-links">
+          <a href="/">Home</a>
+          <a href="/pages/destinations/">Destinations</a>
+          <a href="/pages/deals/">Deals</a>
+          <a href="/pages/ships/">Ships</a>
+          <a href="/pages/about/">About</a>
+          <a class="btn" href="/pages/contact/">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Plan your perfect cruise vacation</h1>
+        <p>Expertly curated itineraries, exclusive perks, and personalized support from a real travel agent.</p>
+
+        <div class="searchbar" role="search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 21l-4.3-4.3" stroke="#34536d" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="#34536d" stroke-width="2"/></svg>
+          <input id="searchWidgetTrigger" type="search" placeholder="Try: Alaska in June under $1500" aria-label="Search cruises" />
+          <a class="btn primary" href="#" onclick="document.getElementById('searchWidgetTrigger').click(); return false;">Search</a>
+        </div>
+
+        <div class="cta" style="margin-top:14px">
+          <a class="btn" href="#featured">Browse featured deals</a>
+          <a class="btn" href="/pages/contact/">Get free quote</a>
+        </div>
+      </div>
+
+      <!-- Vertex AI Search widget (hidden until triggered) -->
+      <gen-search-widget
+        configId="e25a5073-59d6-4274-8717-998251bcca06"
+        triggerId="searchWidgetTrigger">
+      </gen-search-widget>
+    </section>
+
+    <section id="featured" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured deals</h2>
+          <p class="lead">Hand-picked sailings with limited-time savings.</p>
+        </div>
+        <div class="grid cards">
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1544551763-7ef4200b79c7?q=80&w=1600&auto=format&fit=crop" alt="Alaska fjords" />
+            <div class="content">
+              <h3>7-Night Alaska Inside Passage</h3>
+              <div class="meta">Round-trip Seattle • May–Sep</div>
+              <div class="price">From $899 pp</div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1600&auto=format&fit=crop" alt="Caribbean beach" />
+            <div class="content">
+              <h3>5-Night Western Caribbean Escape</h3>
+              <div class="meta">From Miami • Year-round</div>
+              <div class="price">From $499 pp</div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=1600&auto=format&fit=crop" alt="Mediterranean coast" />
+            <div class="content">
+              <h3>10-Night Mediterranean Classics</h3>
+              <div class="meta">Barcelona to Rome • Apr–Oct</div>
+              <div class="price">From $1,399 pp</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Top destinations</h2>
+          <p class="lead">Discover the world by sea—your way.</p>
+        </div>
+        <div class="grid four">
+          <div class="card"><img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=1600&auto=format&fit=crop" alt="Alaska" /><div class="content"><strong>Alaska</strong><span class="meta">Glaciers • Wildlife • Fjords</span></div></div>
+          <div class="card"><img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1600&auto=format&fit=crop" alt="Mediterranean" /><div class="content"><strong>Mediterranean</strong><span class="meta">History • Cuisine • Culture</span></div></div>
+          <div class="card"><img src="https://images.unsplash.com/photo-1496483648148-47c686dc86a8?q=80&w=1600&auto=format&fit=crop" alt="Caribbean" /><div class="content"><strong>Caribbean</strong><span class="meta">Beaches • Sunshine • Relax</span></div></div>
+          <div class="card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="Northern Europe" /><div class="content"><strong>Northern Europe</strong><span class="meta">Castles • Fjords • Cities</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why book with us</h2>
+          <p class="lead">Real humans. Real expertise. Real value.</p>
+        </div>
+        <div class="points">
+          <div class="point"><strong>Personalized planning</strong><br/><span class="meta">We match you to the right ship and itinerary.</span></div>
+          <div class="point"><strong>Exclusive perks</strong><br/><span class="meta">Onboard credit, specialty dining, upgrades and more.</span></div>
+          <div class="point"><strong>End-to-end support</strong><br/><span class="meta">From deposit to disembarkation—you’re never on your own.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2>What travelers say</h2>
+          <p class="lead">Rated 5-stars for service and savings.</p>
+        </div>
+        <div class="grid three">
+          <div class="quote">“Flawless experience! They found us a balcony cabin under budget.” — Mia P.</div>
+          <div class="quote">“Insider tips made Alaska unforgettable. We’ll be back!” — Jordan R.</div>
+          <div class="quote">“Fast responses and amazing perks. Highly recommend.” — Arjun K.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+        <div>
+          <h2>Ready to set sail?</h2>
+          <p class="lead">Tell us your dream cruise—we'll handle the details.</p>
+        </div>
+        <a class="btn primary" href="/pages/contact/">Get your free quote</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Cruise Concierge</strong><br/>
+        <small class="muted">Your trusted cruise travel agent</small>
+      </div>
+      <div>
+        <strong>Contact</strong><br/>
+        <a href="mailto:hello@cruiseconcierge.example">hello@cruiseconcierge.example</a><br/>
+        <a href="tel:+15551234567">(555) 123-4567</a>
+      </div>
+      <div>
+        <strong>Explore</strong><br/>
+        <a href="/pages/destinations/">Destinations</a><br/>
+        <a href="/pages/deals/">Deals</a><br/>
+        <a href="/pages/ships/">Ships</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+  <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=en_US" defer></script>
+</body>
+</html>
