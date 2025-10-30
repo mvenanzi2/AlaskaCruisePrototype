@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engineer Shift &amp; Workforce Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand__symbol" aria-hidden="true">⚙️</div>
+        <div>
+          <h1>Shift &amp; Workforce Planner</h1>
+          <p class="brand__subtitle">Keep crews aligned, staffed, and ready.</p>
+        </div>
+      </div>
+      <nav class="view-toggle" aria-label="Select workspace view">
+        <button class="view-toggle__btn active" data-target="engineer-view">
+          Engineer Portal
+        </button>
+        <button class="view-toggle__btn" data-target="planner-view">
+          Planner Workspace
+        </button>
+      </nav>
+      <div class="date-range">
+        <label for="dashboard-week">Week of</label>
+        <input type="week" id="dashboard-week" name="dashboard-week" />
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel panel--wide" id="dashboard-panel" aria-labelledby="dashboard-title">
+        <div class="panel__header">
+          <h2 id="dashboard-title">Operations Overview</h2>
+        </div>
+        <div class="metrics" id="dashboard-metrics" role="list"></div>
+        <div class="dashboard-grid">
+          <div class="dashboard-card" aria-live="polite">
+            <h3>Upcoming Shifts</h3>
+            <ul class="shift-feed" id="upcoming-shifts"></ul>
+          </div>
+          <div class="dashboard-card">
+            <h3>Project Burndown</h3>
+            <div id="project-burndown" class="burndown"></div>
+          </div>
+          <div class="dashboard-card">
+            <h3>Utilization Heatmap</h3>
+            <div class="heatmap" id="utilization-heatmap"></div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="panel"
+        id="engineer-view"
+        aria-labelledby="engineer-view-title"
+      >
+        <div class="panel__header">
+          <div>
+            <h2 id="engineer-view-title">Engineer Portal</h2>
+            <p class="panel__subtitle">
+              Review upcoming shifts, project load, and weekly hours.
+            </p>
+          </div>
+          <div class="panel__controls">
+            <label class="field" for="engineer-select">
+              <span>Engineer</span>
+              <select id="engineer-select" name="engineer-select"></select>
+            </label>
+            <label class="field" for="engineer-weeks">
+              <span>Show weeks</span>
+              <select id="engineer-weeks" name="engineer-weeks">
+                <option value="2">2 weeks</option>
+                <option value="4" selected>4 weeks</option>
+                <option value="8">8 weeks</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="engineer-grid">
+          <section class="card" aria-live="polite">
+            <h3>Schedule Timeline</h3>
+            <div id="engineer-schedule" class="timeline"></div>
+          </section>
+          <section class="card">
+            <h3>Weekly Totals</h3>
+            <div id="engineer-weekly-totals" class="weekly-totals"></div>
+          </section>
+          <section class="card">
+            <h3>Assignments</h3>
+            <ul id="engineer-assignments" class="assignment-list"></ul>
+          </section>
+        </div>
+      </section>
+
+      <section
+        class="panel hidden"
+        id="planner-view"
+        aria-labelledby="planner-view-title"
+      >
+        <div class="panel__header">
+          <div>
+            <h2 id="planner-view-title">Planner Workspace</h2>
+            <p class="panel__subtitle">
+              Assign engineers, monitor utilization, and manage project timelines.
+            </p>
+          </div>
+          <div class="panel__controls">
+            <label class="field" for="planner-week">
+              <span>Focus week</span>
+              <input type="week" id="planner-week" name="planner-week" />
+            </label>
+            <button id="reset-data" class="btn btn--secondary">
+              Reset Demo Data
+            </button>
+          </div>
+        </div>
+
+        <div class="planner-layout">
+          <div class="planner-forms">
+            <section class="card card--form">
+              <h3>Add Engineer</h3>
+              <form id="add-engineer-form" class="form-grid">
+                <label class="field">
+                  <span>Name</span>
+                  <input type="text" name="name" required />
+                </label>
+                <label class="field">
+                  <span>Role</span>
+                  <input type="text" name="role" required />
+                </label>
+                <label class="field">
+                  <span>Primary skills (comma separated)</span>
+                  <input type="text" name="skills" placeholder="React, API, QA" />
+                </label>
+                <label class="field">
+                  <span>Weekly capacity (hrs)</span>
+                  <input type="number" name="capacity" min="1" max="80" value="40" required />
+                </label>
+                <button type="submit" class="btn btn--primary">Add Engineer</button>
+              </form>
+            </section>
+
+            <section class="card card--form">
+              <h3>Create Project</h3>
+              <form id="add-project-form" class="form-grid">
+                <label class="field">
+                  <span>Project name</span>
+                  <input type="text" name="name" required />
+                </label>
+                <label class="field">
+                  <span>Client / Team</span>
+                  <input type="text" name="client" placeholder="Core Platform" />
+                </label>
+                <label class="field">
+                  <span>Start date</span>
+                  <input type="date" name="start" required />
+                </label>
+                <label class="field">
+                  <span>Target go-live</span>
+                  <input type="date" name="end" required />
+                </label>
+                <button type="submit" class="btn btn--primary">Create Project</button>
+              </form>
+            </section>
+
+            <section class="card card--form">
+              <h3>Schedule Assignment</h3>
+              <form id="add-assignment-form" class="form-grid">
+                <label class="field">
+                  <span>Project</span>
+                  <select name="project" required></select>
+                </label>
+                <label class="field">
+                  <span>Engineer</span>
+                  <select name="engineer" required></select>
+                </label>
+                <label class="field">
+                  <span>Date</span>
+                  <input type="date" name="date" required />
+                </label>
+                <label class="field">
+                  <span>Start</span>
+                  <input type="time" name="start" required />
+                </label>
+                <label class="field">
+                  <span>End</span>
+                  <input type="time" name="end" required />
+                </label>
+                <label class="field">
+                  <span>Location</span>
+                  <input type="text" name="location" placeholder="Remote, HQ-3F" />
+                </label>
+                <label class="field">
+                  <span>Status</span>
+                  <select name="status">
+                    <option value="Tentative">Tentative</option>
+                    <option value="Confirmed" selected>Confirmed</option>
+                    <option value="On Hold">On Hold</option>
+                  </select>
+                </label>
+                <label class="field field--full">
+                  <span>Notes</span>
+                  <textarea name="notes" rows="2" placeholder="Sprint 37 planning"></textarea>
+                </label>
+                <button type="submit" class="btn btn--primary">Add to Schedule</button>
+              </form>
+            </section>
+          </div>
+
+          <div class="planner-board">
+            <section class="card">
+              <div class="card__header">
+                <h3>Week Schedule</h3>
+                <div class="legend" id="status-legend"></div>
+              </div>
+              <div class="table-wrapper">
+                <table class="schedule-table" aria-describedby="planner-view-title">
+                  <thead>
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Project</th>
+                      <th scope="col">Engineer</th>
+                      <th scope="col">Time</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Location</th>
+                      <th scope="col" class="col-notes">Notes</th>
+                      <th scope="col" class="col-actions">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="planner-schedule-body"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="card">
+              <h3>Utilization by Engineer</h3>
+              <div id="planner-utilization" class="utilization"></div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>
+        Demo data stored locally in your browser. Refresh to see your updates instantly.
+      </p>
+      <button id="export-data" class="btn btn--ghost">Export Schedule JSON</button>
+    </footer>
+
+    <dialog id="export-modal">
+      <form method="dialog" class="modal">
+        <header>
+          <h2>Schedule Export</h2>
+        </header>
+        <textarea id="export-output" readonly spellcheck="false"></textarea>
+        <menu>
+          <button class="btn btn--secondary" value="cancel">Close</button>
+          <button class="btn btn--primary" id="copy-export" value="default">Copy</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <template id="assignment-row-template">
+      <tr>
+        <td class="assignment-date"></td>
+        <td class="assignment-project"></td>
+        <td class="assignment-engineer"></td>
+        <td class="assignment-time"></td>
+        <td class="assignment-status"></td>
+        <td class="assignment-location"></td>
+        <td class="assignment-notes"></td>
+        <td class="assignment-actions"></td>
+      </tr>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
